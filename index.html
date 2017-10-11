@@ -3,10 +3,19 @@
     <title> A Counter </title>
   </head>
   <body>
-    The counter is <span id="counter-element">0</span>
+    The counter is <span id="counter-element">count-goes-here</span>
     <button>Click To Increment</button>
   <script>
-    alert("Hey there");
+    // The following is a API provided by the browser so we can execute our code when all elements on page have loaded.
+    // it's not safe to run code without this because the code might be executed even before your browser has converted the html to a proper structure which it provides you an API to modify
+    document.addEventListener("DOMContentLoaded", function () {
+      var counter = 0;
+      var counterElement = document.getElementById('counter-element');
+      setInterval(function () {
+        counter++;
+        counterElement.innerText = counter;
+      }, 1000);
+    });
   </script>
   </body>
 </html>
