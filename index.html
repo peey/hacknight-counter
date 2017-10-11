@@ -4,17 +4,21 @@
   </head>
   <body>
     The counter is <span id="counter-element">count-goes-here</span>
-    <button>Click To Increment</button>
+    <button id="increment-button">Click To Increment</button>
   <script>
-    // The following is a API provided by the browser so we can execute our code when all elements on page have loaded.
+    // The following is a API provided by the browser so we can execute our code (contained in function foo)  when all elements on page have loaded.
     // it's not safe to run code without this because the code might be executed even before your browser has converted the html to a proper structure which it provides you an API to modify
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function foo () {
       var counter = 0;
       var counterElement = document.getElementById('counter-element');
-      setInterval(function () {
+      var incrementButton = document.getElementById('increment-button');
+
+      // bar is scheduled to execute every 1000 milliseconds, again by window API
+      incrementButton.addEventListener("click", function bar () {
         counter++;
+        // DOM API to manipulate the text within an element
         counterElement.innerText = counter;
-      }, 1000);
+      });
     });
   </script>
   </body>
